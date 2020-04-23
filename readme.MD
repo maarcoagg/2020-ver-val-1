@@ -1,8 +1,8 @@
-#Verificação e Validação de Software
-##Resumo - Testing Techniques
-1  Teste baseado em especificações \
-    Basicamente explica que dá pra implementar testes úteis com estratégias simples: \
-        Método do particionamento do espaço de entrada. Ex.: \
+# Verificação e Validação de Software
+## Resumo - Testing Techniques
+1.  Teste baseado em especificações \
+  Basicamente explica que dá pra implementar testes úteis com estratégias simples: \
+    Método do particionamento do espaço de entrada. Ex.: \
             "Um ano é bissexto se: (1) O ano é divisível por 4; (2) O ano não é divisível por 100; \
                                     (3) Exceções são os anos divisíveis por 400 que também são anos bissextos" \
             Ano: 2016	Asserção: Divisível por 4 e não é divisível por 100		res_esperado: bissexto \
