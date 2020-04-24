@@ -10,16 +10,20 @@
             Ano: 39		Asserção: Não é divisível por 4							res_esperado: não é bissexto \
             Ano: 1900	Asserção: Divisível por 4 e por 100, mas não por 400	res_esperado: não é bissexto \
         Método de partição de categoria;
+
 ### 2. Teste de valor limite
     A. Limites entre classes/partições:
         Se um limite tem 2 entradas, cada uma exige dois casos de teste
     B. Terminologia:
         a. on-point:	valor limite que torna a condição falsa (Ex.1: x < 100; on-point = 100) OU
                         valor limite que torna a condição verdadeira (Ex.2: x <= 100; on-point = 100)  
-        b. off-point: valor mais próximo que torna a condição verdadeira (Ex.: x < 100; off-point = 99) OU
+        
+        b. off-point:   valor mais próximo que torna a condição verdadeira (Ex.: x < 100; off-point = 99) OU
                         valor mais próximo que torna a condição falsa (Ex.2: x <= 100; off-point = 101)
+        
         c. in-points:	universo de valores válidos com a condição EXCLUSA (Ex.: x < 100; in-points contém todos int <= 99)
                         universo de valores válidos com a condição INCLUSA (Ex.: x <= 100; in-points contém todos int <= 100)
+        
         d. out-points:universo de valores inválidos com a condição EXCLUSA (Ex.: x < 100; out-points contém todos int >= 100)
                         universo de valores inválidos com a condição INCLUSA (Ex.: x <= 100; out-points contém todos int >= 101)
     C. Concluindo:
@@ -30,12 +34,13 @@
                 Na prática	queremos que todas as demais condições permaneçam verdadeiras, ou seja, testar a saída de 
                 uma forma independente
         c. É importante variar os in-points nos diferentes testes para verificar os resultados p/ vários inpoints
+
 ### 3. Teste Estrutural
         
 ### 4. Testes a implementar
-    
     testar on/off point de cada variavel, deixando um in-point aleatorio nas demais variaveis
+    
 ### 5. Outras coisas a considerar:
-    A. Testes parametrizados devem ser usados no lugar de >1 assert no mesmo método pois são capazes de gerar relatórios de teste
+    A. Testes parametrizados devem ser usados no lugar de >1 assert no mesmo método pois são capazes de gerar relatórios de teste.
         (Outros recursos na documentação)
     

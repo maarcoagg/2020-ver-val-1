@@ -32,11 +32,11 @@ public class DepComb {
 	public void settAlcool1(int qntd){this.tAlcool1 = qntd;}
 	
 	public void settAlcool2(int qntd){this.tAlcool2 = qntd;}
-	
-	// Revisar se é interessante adicionar informação relacionada ao excesso não guardado nos tanques.
 
 	public int recebeAditivo(int qtdade){
-        int armz_disp = MAX_ADITIVO - gettAditivo(); 
+		if (qtdade <= 0) return -1;	
+		
+		int armz_disp = MAX_ADITIVO - gettAditivo(); 
         int excesso = qtdade - armz_disp;
         settAditivo(qtdade - excesso);
 
@@ -44,6 +44,8 @@ public class DepComb {
 	}
 	
 	public int recebeGasolina(int qtdade){
+		if (qtdade <= 0) return -1;	
+
 		int armz_disp = MAX_GASOLINA - gettGasolina(); //2000
         int excesso = qtdade - armz_disp; //10000 - 2000 = 8000
         settGasolina(qtdade - excesso);
@@ -52,6 +54,8 @@ public class DepComb {
 	}
 
 	public int recebeAlcool(int qtdade){
+		if (qtdade <= 0) return -1;	
+
 		int armz_disp = MAX_ALCOOL - (gettAlcool1() + gettAlcool2());
         int excesso = qtdade - armz_disp;
         settAlcool1((int)((qtdade - excesso)/2));
@@ -69,36 +73,43 @@ public class DepComb {
 
 	public int[] encomendaCombustivel(int qtdade, boolean emerg){
 		int[] qntd_tanques;
-
-		if (qtdade > 0 && qtdade <= 10000) {
+		
+		System.out.println("Quantidade: " + qtdade);
+		if (qtdade > 0) {
 			if (emerg) qntd_tanques = getCombustivel(qtdade, 0);
 			else qntd_tanques = getCombustivel(qtdade, 25);
-		} else qntd_tanques = new int[]{-2,0,0,0};
+		} 
+		else{
+			qntd_tanques = new int[]{-2,0,0,0};
+		} 
 
 		return qntd_tanques;
 	}
-
+	
 	public int[] getCombustivel(int qtdade, int limite) {
-		float l = limite/100; // Transforma o limite em porcentagem
+		double l = limite/100.0; // Transforma o limite em porcentagem
 		int[] qtComb = new int[]{0, 0, 0, 0};
 		boolean faltouAditivo = false, faltouGasolina= false, faltouAlcool = false;
-
+		
 		if ((int)(gettAditivo() - qtdade*0.05) < (MAX_ADITIVO*l)){
+			System.out.println(MAX_ADITIVO*l);
 			faltouAditivo = true;
 			qtComb[0] = -1;
 		}
-
+    
 		if ((int)(gettGasolina() - qtdade*0.70) < (MAX_GASOLINA*l)){
+			System.out.println(MAX_GASOLINA*l);
 			faltouGasolina = true;	
 			qtComb[1] = -1;
 		}
 		
 		if ((int)((gettAlcool1()+gettAlcool2()) - qtdade*0.25) < (MAX_ALCOOL*l)){
+			System.out.println(MAX_ALCOOL*l);
 			faltouAlcool = true;
 			qtComb[2] = -1;
 			qtComb[3] = -1;
 		}
-
+	
 		if (faltouAditivo || faltouGasolina || faltouAlcool){
 			return qtComb;
 		} else {

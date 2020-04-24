@@ -1,13 +1,14 @@
 package com.Grupo11;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        DepComb dc = new DepComb(10000, 150, 1250, 1250);
+        int[] tanques = dc.encomendaCombustivel(-100, false);
+        
+        for(int i=0; i < tanques.length; i++){
+            System.out.println(tanques[i]);
+        }
     }
 }
