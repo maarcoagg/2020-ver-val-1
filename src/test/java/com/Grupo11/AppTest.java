@@ -3,9 +3,6 @@ package com.Grupo11;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-/**
- * Unit test for simple App.
- */
 public class AppTest {
 
     DepComb dc;
@@ -145,5 +142,6 @@ public class AppTest {
         infoEx = -1;
 
         Assertions.assertEquals(infoEx, info);
-    }    
+    }
+
 }
